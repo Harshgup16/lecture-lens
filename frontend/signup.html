@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,4 +86,93 @@
         </script>
     </main>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Noted</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="activePage.js"></script>
+</head>
+<body>
+    <nav id="header">
+        <div id="T_L">
+            <div id="head_logo">
+                <a href="index.html"><img src="logo.png"></a>
+            </div>
+            <div id="title">
+                NOTE<span id="D">D</span>
+            </div>
+        </div>
+        <div id="action_bar">
+            <div class="action">
+                <a href="index.html">HOME</a>
+            </div>
+            <div class="action">
+                <a href="create_new.html">CREATE NEW</a>
+            </div>
+            <div class="action">
+                <a href="contact.html">CONTACT US</a>
+            </div>
+            <div class="action">
+                <a href="contribution.html">CONTRIBUTION</a>
+            </div>
+        </div>
+        <div id="L_G">
+            <div id="signup_btn">
+                <a href="login.html">Login</a>
+            </div>
+            <div id="get_started">
+                <a href="#">Get Started</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="signup-card">
+            <h2>Signup</h2>
+            <h3>Enter your credentials</h3>
+            
+            <form class="login-form" method="POST" action="{{ url_for('login')}}">
+                <input type="text" name="username" placeholder="Username" required="required">
+                <input type="password" name="password" placeholder="Password" required="required">
+                <div class="select-container">
+                    <select name="role" required="required">
+                        <option value="">Select Role</option>
+                        <option value="student">Student</option>
+                        <option value="teacher">Teacher</option>
+                    </select>
+                    <select name="gender">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <input type="tel" name="mobile" placeholder="Mobile Number">
+                <input type="email" name="email" placeholder="Email" required="required">
+                <a href="login.html">Login?</a>
+                <button type="submit">Signup</button>
+            </form>
+        </div>
+        <script type="text/javascript">
+            const toggleMenuOpen = () => document.body.classList.toggle("open");
+        
+            
+            const colorPickerBtn = document.querySelector('.color-picker-btn');
+                const colorPickerContainer = document.querySelector('.color-picker-container');
+                const colorPicker = document.querySelector('.color-picker');
+        
+                colorPickerBtn.addEventListener('click', () => {
+                    colorPickerContainer.style.display = colorPickerContainer.style.display === 'none' ? 'block' : 'none';
+                });
+        
+                colorPicker.addEventListener('input', () => {
+                    const selectedColor = colorPicker.value;
+                    document.body.style.background = selectedColor;
+                    
+                });
+        </script>
+    </main>
+</body>
+>>>>>>> 698f0f17fb6c5a18403414d76267ca4ec99c7bcc
 </html>
