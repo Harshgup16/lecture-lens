@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Noted</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="activePage.js"></script>
+</head>
+<body>
+    <nav id="header">
+        <div id="T_L">
+            <div id="head_logo">
+                <img src="logo.png" alt="Logo">
+            </div>
+            <div id="title">
+                NOTE<span id="D">D</span>
+            </div>
+        </div>
+        <div id="action_bar">
+            <div class="action">
+                <a href="index.html">HOME</a>
+            </div>
+            <div class="action">
+                <a href="create_new.html">CREATE NEW</a>
+            </div>
+            <div class="action">
+                <a href="contact.html">CONTACT US</a>
+            </div>
+            <div class="action">
+                <a href="contribution.html">CONTRIBUTION</a>
+            </div>
+        </div>
+        <div id="L_G">
+            <div id="login_btn">
+                <a href="signup.html">Signup</a>
+            </div>
+            <div id="get_started">
+                <a href="#">Get Started</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="login-card">
+            <h2>Login</h2>
+            <h3>Enter your credentials</h3>
+            
+            <form class="login-form" method="POST" action="{{ url_for('login')}}">
+                <input type="text" name="username" placeholder="Username" required="required">
+                <input type="password" name="password" placeholder="Password" required="required">
+                <a href="signup.html">Signup?</a>
+                <button type="submit">LOGIN</button>
+            </form>
+        </div>
+        <script type="text/javascript">
+            const toggleMenuOpen = () => document.body.classList.toggle("open");
+        
+            
+            const colorPickerBtn = document.querySelector('.color-picker-btn');
+                const colorPickerContainer = document.querySelector('.color-picker-container');
+                const colorPicker = document.querySelector('.color-picker');
+        
+                colorPickerBtn.addEventListener('click', () => {
+                    colorPickerContainer.style.display = colorPickerContainer.style.display === 'none' ? 'block' : 'none';
+                });
+        
+                colorPicker.addEventListener('input', () => {
+                    const selectedColor = colorPicker.value;
+                    document.body.style.background = selectedColor;
+                    
+                });
+        </script>
+    </main>
+</body>
+</html>

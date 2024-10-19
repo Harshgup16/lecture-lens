@@ -1,0 +1,544 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@media (max-width: 768px) {
+    #App_title {
+        font-size: 50px;
+    }
+    #support {
+        font-size: 40px;
+    }
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the wrapper takes the full viewport height */
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+a:is(:link, :active, :visited).active{
+    font-weight: bold;
+    color:#333;
+}
+
+#header{
+    display: flex;
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    justify-content: space-between;
+}
+
+#header::before{
+    
+    background-size: cover;
+    background-position: center;
+    /* opacity: 0.75; Set the opacity of the background image */
+    z-index: -1; /* Send the background behind the content */
+}
+
+#head_logo{
+    margin-left: 20px;
+    background-color: rgb(255, 255, 255);
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgb(109, 107, 107);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#T_L{
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+}
+
+#head_logo img{
+    width: 100%;
+    height: 100%;
+}
+
+#title{
+    margin-left: 10px;
+    color: black;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+#action_bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    border-radius: 40px;
+    justify-content: space-between;
+    padding: 5px 20px;  /* Added padding to match the image */
+}
+
+.action {
+    font-size: 16px;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.action a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Hover effect for action items */
+.action:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the active/current page */
+.action.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+
+
+
+#L_G{
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+#login_btn, #get_started,#signup_btn {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    border: 2px solid #3870ff;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login_btn a, #get_started a,#signup_btn a {
+    text-decoration: none;
+    color: inherit;
+    padding: 10px 20px;
+    display: block;
+    /* width: 100%; */
+    height: 100%;
+    text-align: center;
+}
+
+#login_btn,#signup_btn {
+    margin-right: 20px;
+}
+
+#get_started:hover, #signup_btn:hover, #login_btn:hover {
+    background-color: #d2d0d0; 
+}
+
+#get_started button , #signup_btn button , #login_btn button {
+    background: transparent; 
+    border: none; 
+    font-size: inherit; 
+    cursor: pointer; 
+    padding: 0; 
+}
+
+
+#D{
+    color: #38B6FF;
+}
+
+#main {
+    position: relative; 
+    margin: 0px 10px 10px 10px;
+    padding: 120px 10px 30px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:unset ;
+    align-items: center;
+    height: 600px;
+    border: 2px solid rgb(202, 202, 202);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    border-radius: 20px;
+    overflow: hidden; /* Ensure the background doesn’t overflow */
+}
+
+#main::before {
+    content: ""; /* Pseudo-element needs content */
+    position: absolute; /* Position it over the parent element */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('main_bg.png'); /* Your background image */
+    background-size: cover;
+    background-position: center;
+    opacity: 1; /* Set the opacity of the background image */
+    z-index: -1; /* Send the background behind the content */
+}
+
+.logo a img{
+    background-color: aliceblue;
+    height: 70px;
+    width: 70px;
+    margin-top: 50px;
+    border: 2px solid rgb(109, 107, 107);
+    border-radius: 7px;
+}
+
+#App_title {
+    height: 100px;
+    color: black;
+    align-items: center;
+    font-weight: 700;
+    font-size: 100px;
+    margin-bottom: 10px; /* Reduced from default (0px) to 10px or any value that fits */
+    padding-bottom: 0px;
+}
+
+#support {
+    height: 80px;
+    color: rgb(172, 172, 172);
+    font-weight: 700;
+    font-size: 80px;
+}
+
+#new_note{
+    margin-top: 50px;
+    padding: 5px;
+    background-color:#38B6FF;
+    border-radius: 10px;
+    margin-bottom: 400px;
+}
+#new_note button{
+    padding: 5px 10px;
+    background-color: #38B6FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#new_note button:hover {
+    background-color: #ffffff;
+    color: #38B6FF;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#rec_img{
+    height: 50px;
+    width:68px; 
+    display: block; 
+    margin: auto;
+}
+
+.signup-card {
+    position: absolute;
+    top: 60%;
+    left: 46.2%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 28%;
+    margin: 20px;
+    padding: 70px;
+    border-radius: 1.25rem;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.signup-card > h2{
+    font-size: 36px;
+    font-weight: 600;
+    margin: 0 0 12px;
+}
+
+.signup-card > h3{
+    color: rgba(0, 0, 0, 0.38);
+    margin: 0 0 30px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.login-card {
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 100%;
+    margin: 20px;
+    padding: 70px;
+    border-radius: 1.25rem;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-card > h2{
+    font-size: 36px;
+    font-weight: 600;
+    margin: 0 0 12px;
+}
+
+.login-card > h3{
+    color: rgba(0, 0, 0, 0.38);
+    margin: 0 0 30px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.login-form{
+    width: 100%;
+    margin: 0;
+    display: grid;
+    gap: 16px;
+}
+
+.login-form > input, .login-form > button{
+    height: 50px;
+}
+
+.login-form > input,select {
+    border: 2px solid #ebebeb;
+    font-family: inherit;
+    font-size: 15px;
+    padding: 0 16px;
+    border-radius: 1.25rem;
+    transition: all 0.375s;
+}
+
+.login-form > input,select:hover{
+    border: 2px solid #10449A;
+}
+
+.select-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.login-form > button{
+    cursor: pointer;
+    width: 100%;
+    padding: 0 16px;
+    border-radius: 1.25rem;
+    background: #216ce7;
+    color: #f9f9f9;
+    border: 0;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: all 0.375s;
+}
+
+.login-form > button:hover{
+    background: #10449A;
+}
+
+.login-form > a{
+    color: #216ce7;
+    font-size: 0.9rem;
+    text-align: left;
+    text-decoration: none;
+    margin-bottom: 6px;
+    transition: all 0.375s;
+}
+
+.login-form > a:hover{
+    color: #10449A;
+}
+
+@keyframes rotate{
+    100%{
+        background-position: 15% 50%;
+    }
+}
+
+@media (width >= 500px){
+    body{
+        padding: 0;
+    }
+    .login-card{
+        margin: 0;
+        width: 400px;
+    }
+}
+
+#main {
+    position: relative; 
+    margin: 0px 10px 10px 10px;
+    padding: 120px 10px 30px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:unset ;
+    align-items: center;
+    height: 600px;
+    border: 2px solid rgb(202, 202, 202);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    border-radius: 20px;
+    overflow: hidden; /* Ensure the background doesn’t overflow */
+}
+
+#main::before {
+    content: ""; /* Pseudo-element needs content */
+    position: absolute; /* Position it over the parent element */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('main_bg.png'); /* Your background image */
+    background-size: cover;
+    background-position: center;
+    opacity: 1; /* Set the opacity of the background image */
+    z-index: -1; /* Send the background behind the content */
+}
+
+#txt{
+    background-color: rgb(237, 243, 248);
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 100px;
+    margin-bottom: 0;
+}
+
+#button-container {
+    display: flex; /* Aligns the buttons horizontally */
+    justify-content: space-between; /* Centers the buttons horizontally */
+    align-items: center; /* Centers the buttons vertically */
+    gap: 20px; /* Adds space between the buttons */
+    margin-top: 100px; /* Adds a margin of 200px above the buttons */
+}
+
+#record, #upload {
+    width: 100px; /* Set a fixed width for each button */
+    height: 100px; /* Set a fixed height for each button */
+    display: flex; /* Enables flexbox for centering */
+    justify-content: center; /* Centers the button */
+    align-items: center; /* Centers the button */
+}
+
+#button-container {
+    display: flex; /* Aligns the buttons horizontally */
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Centers the buttons vertically */
+    gap: 40px; /* Space between the buttons */
+    margin-top: 100px; /* Margin above the buttons */
+    width: 100%; /* Full width of #main */
+}
+
+#record, #upload {
+    display: flex; /* Enables flexbox for centering */
+    flex-direction: column; /* Aligns items vertically */
+    align-items: center; /* Centers items horizontally */
+}
+
+#record button, #upload button {
+    border-radius: 20px; 
+    width: 100px; /* Fixed width for each button */
+    height: 100px; /* Fixed height for each button */
+    background-color: #38B6FF; /* Button background color */
+    border: none; /* Removes border */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+#record button:hover, #upload button:hover {
+    background-color: #80d0ff; /* Lightens button on hover */
+}
+
+#record img, #upload img {
+    max-width: 80%; /* Scales the image */
+    max-height: 80%; /* Prevents overflow */
+    display: block; /* Ensures no extra space around the image */
+    margin: auto; /* Centers the image in the button */
+}
+
+label {
+    margin-top: 10px; /* Space between button and label */
+    font-size: 16px; /* Font size for the label */
+    color: #333; /* Text color for the label */
+    text-align: center; /* Center the text */
+}
+
+h1, h2 {
+    color: #333; /* Set header text color */
+}
+
+section {
+    margin-bottom: 30px; /* Spacing between sections */
+}
+
+ul {
+    list-style-type: disc; /* Bullet points for lists */
+    margin-left: 20px; /* Indentation for list */
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#company-info {
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    margin-top: 20px;
+}
+body {
+    margin: 0;
+    padding: 20px 20px 0 20px;
+}
+nav {
+    position: sticky;
+    top: 20px;
+    background-color: white;
+    z-index: 1000;
+    margin-bottom: 20px;
+}
