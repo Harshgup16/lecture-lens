@@ -5,7 +5,7 @@ from models import User
 
 
 
-genai.configure(api_key="AIzaSyDn4MtF99w6vIP2lafquqUGSET63pHg6B0")
+genai.configure(api_key="Your_API_Key")
 
 generation_config = {
     "temperature": 1,
