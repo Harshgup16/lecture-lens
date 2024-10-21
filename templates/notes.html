@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block title %}404 Page Not Found{% endblock %}
+
+{% block content %}
+<style>
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #f0f0f0;
+    overflow: hidden;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(45deg, #f3f3f3, #e0e0e0);
+}
+.error-code {
+    font-size: 150px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+}
+.error-code::after {
+    content: "404";
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: blur(10px);
+    opacity: 0.5;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { filter: blur(10px); opacity: 0.5; }
+    50% { filter: blur(15px); opacity: 0.7; }
+    100% { filter: blur(10px); opacity: 0.5; }
+}
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.back-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+.back-button:hover {
+    background-color: #2980b9;
+}
+.back-button:active {
+    transform: scale(0.98);
+}
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="error-code" id="error-code">404</div>
+<h1>Oops! Page Not Found</h1>
+<p>The page you're looking for doesn't exist or has been moved.<br>Please check the URL or try logging in again.</p>
+<button class="back-button" onclick="goBack()">Go Back</button>
+</div>
+<canvas class="particles" id="particles"></canvas>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+// Particle animation
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray;
+
+// Particle class
+class Particle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 5 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.2) this.size -= 0.1;
+    }
+    draw() {
+        ctx.fillStyle = 'rgba(52, 152, 219, 0.8)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+function init() {
+    particlesArray = [];
+    for (let i = 0; i < 100; i++) {
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        particlesArray.push(new Particle(x, y));
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+        if (particlesArray[i].size <= 0.2) {
+            particlesArray.splice(i, 1);
+            i--;
+        }
+    }
+    requestAnimationFrame(animate);
+}
+
+init();
+animate();
+
+// Add new particles on mouse move
+window.addEventListener('mousemove', function(event) {
+    for (let i = 0; i < 2; i++) {
+        particlesArray.push(new Particle(event.x, event.y));
+    }
+});
+</script>
+{% endblock %}

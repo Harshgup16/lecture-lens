@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Index Page{%endblock%}
+{%block content%}
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script src="{{ url_for('static', filename='activePage.js') }}" defer></script>
+<style>
+#main::before {
+    content: ""; /* Pseudo-element needs content */
+    position: absolute; /* Position it over the parent element */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/main_bg.png'); /* Your background image */
+    background-size: cover;
+    background-position: center;
+    opacity: 1; /* Set the opacity of the background image */
+    z-index: -1; /* Send the background behind the content */
+}
+</style>
+    <nav id="header">
+        <div id="T_L">
+            <div id="head_logo">
+                <img src="/img/logo.png" alt="Logo" >
+            </div>
+            <div id="title">
+                NOTE<span id="D">D</span>
+            </div>
+        </div>
+        <div id="action_bar">
+            <div class="action">
+                <a onclick="location.href='{{ url_for('index') }}'">HOME</a>
+            </div>
+            <div class="action">
+                <a onclick="location.href='{{ url_for('notes') }}'">CREATE NEW</a>
+            </div>
+            <div class="action">
+                <a onclick="location.href='{{ url_for('contact') }}'">CONTACT US</a>
+            </div>
+            <div class="action">
+                <a onclick="location.href='{{ url_for('contribution') }}'">CONTRIBUTION</a>
+            </div>
+        </div>
+        <div id="L_G">
+            {% if not current_user.is_authenticated %}
+            <div id="login_btn">
+                <a onclick="location.href='{{ url_for('login') }}'">Login</a>
+            </div>
+            {% else %}
+            <div id="login_btn">
+                <a onclick="location.href='{{ url_for('logout') }}'">Logout</a>
+            </div>
+            <div id="get_started">
+                <a href="#">Get Started</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+    <main id="m">
+        <div id="main">
+            <h1>Contributions to Noted</h1>
+            <section id="team">
+                <h2>Our Team</h2>
+                <ul>
+                    <li><strong>Team Lead:</strong> Harsh Gupta</li>
+                    <li><strong>Member 1:</strong> Praphull Kumar Yadav</li>
+                    <li><strong>Member 2:</strong> Pratul Singh</li>
+                    <li><strong>Member 3:</strong> Anurag Singh</li>
+                </ul>
+            </section>
+            <section id="how-to-contribute">
+                <h2>Contribution</h2>
+                <ul>
+                    <li>Backend(Modules)-Harsh Gupta</li>
+                    <li>Backend(DSA)-Praphull Kumar Yadav</li>
+                    <li>Backend(File Handeling)-Pratul Singh</li>
+                    <li>Frontend-Anurag Singh</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Noted. All rights reserved.</p>
+    </footer>
+{%endblock%}

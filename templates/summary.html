@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Notes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .left-section {
+            display: flex;
+            align-items: center;
+        }
+        h1 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 24px;
+        }
+        .back-link {
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .back-link img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+        .download-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .download-btn:hover {
+            background-color: #2980b9;
+        }
+        .download-btn img {
+            width: 25px;
+            height: 25px;
+            margin-left: 8px;
+        }
+        .summary {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        @media print {
+            .header {
+                display: none;
+            }
+            .summary {
+                max-height: none;
+                overflow: visible;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="left-section">
+            <a href="/" class="back-link">
+                <img src="/img/back.png" alt="Back to Record">
+            </a>
+            <h1>Let's See Your Notes:</h1>
+        </div>
+        <button onclick="downloadPDF()" class="download-btn">
+            Download
+            <img src="/img/download.png" alt="Download_logo">
+        </button>
+    </div>
+    <div class="summary">
+        {{ summary | safe }}
+    </div>
+    <script>
+        function downloadPDF() {
+            const element = document.querySelector('.summary');
+            const opt = {
+                margin: 1,
+                filename: 'notes-summary.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>

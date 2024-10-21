@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Index Page{%endblock%}
+{%block content%}
+<script src="/js/activePage.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<style>
+#main::before {
+    content: ""; /* Pseudo-element needs content */
+    position: absolute; /* Position it over the parent element */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/main_bg.png'); /* Your background image */
+    background-size: cover;
+    background-position: center;
+    opacity: 1; /* Set the opacity of the background image */
+    z-index: -1; /* Send the background behind the content */
+}
+</style>
+    <nav id="header">
+        <div id="T_L">
+            <div id="head_logo">
+                <img src="/img/logo.png" alt="Logo" >
+            </div>
+            <div id="title">
+                NOTE<span id="D">D</span>
+            </div>
+        </div>
+        <div id="action_bar">
+            <div class="action">
+                <a onclick="location.href='{{ url_for('index') }}'">HOME</a>
+            </div>
+            <div class="action">
+                <a onclick="location.href='{{ url_for('notes') }}'">CREATE NEW</a>
+            </div>
+            <div class="action">
+                <a onclick="location.href='{{ url_for('contact') }}'">CONTACT US</a>
+            </div>
+            <div class="action">
+                <a onclick="location.href='{{ url_for('contribution') }}'">CONTRIBUTION</a>
+            </div>
+        </div>
+        <div id="L_G">
+            {% if not current_user.is_authenticated %}
+            <div id="login_btn">
+                <a onclick="location.href='{{ url_for('login') }}'">Login</a>
+            </div>
+            {% else %}
+            <div id="get_started">
+                <a href="#">Get Started</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+    <main>
+        <div class="signup-card">
+            <h2>Signup</h2>
+            <h3>Enter your credentials</h3>
+            
+            <form class="login-form" method="POST" action="{{ url_for('signup')}}">
+                <input type="text" name="username" placeholder="Username" required="required">
+                <input type="password" name="password" placeholder="Password" required="required">
+                <div class="select-container">
+                    <select name="role" required="required">
+                        <option value="">Select Role</option>
+                        <option value="student">Student</option>
+                        <option value="teacher">Teacher</option>
+                    </select>
+                    <select name="gender">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <input type="tel" name="mobile" placeholder="Mobile Number">
+                <input type="email" name="email" placeholder="Email" required="required">
+                <a onclick="location.href='{{ url_for('login') }}'">Login?</a>
+                <button type="submit">Signup</button>
+            </form>
+        </div>
+        <script type="text/javascript">
+            const toggleMenuOpen = () => document.body.classList.toggle("open");
+        
+            
+            const colorPickerBtn = document.querySelector('.color-picker-btn');
+                const colorPickerContainer = document.querySelector('.color-picker-container');
+                const colorPicker = document.querySelector('.color-picker');
+        
+                colorPickerBtn.addEventListener('click', () => {
+                    colorPickerContainer.style.display = colorPickerContainer.style.display === 'none' ? 'block' : 'none';
+                });
+        
+                colorPicker.addEventListener('input', () => {
+                    const selectedColor = colorPicker.value;
+                    document.body.style.background = selectedColor;
+                    
+                });
+        </script>
+    </main>
+</body>
+{%endblock%}

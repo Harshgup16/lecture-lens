@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Index Page{%endblock%}
+{%block content%}
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<style>
+#main::before {
+    content: ""; /* Pseudo-element needs content */
+    position: absolute; /* Position it over the parent element */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/main_bg.png'); /* Your background image */
+    background-size: cover;
+    background-position: center;
+    opacity: 1; /* Set the opacity of the background image */
+    z-index: -1; /* Send the background behind the content */
+}
+</style>
+    <nav id="header">
+        <div id="T_L">
+            <div id="head_logo">
+                <img src="/img/logo.png" alt="Logo" >
+            </div>
+            <div id="title">
+                NOTE<span id="D">D</span>
+            </div>
+        </div>
+        <div id="action_bar">
+            <div class="action">
+                <a onclick="location.href='{{ url_for('index') }}'">HOME</a>
+            </div>
+            <div class="action">
+                <a onclick="location.href='{{ url_for('notes') }}'">CREATE NEW</a>
+            </div>
+            <div class="action">
+                <a onclick="location.href='{{ url_for('contact') }}'">CONTACT US</a>
+            </div>
+            <div class="action">
+                <a onclick="location.href='{{ url_for('contribution') }}'">CONTRIBUTION</a>
+            </div>
+        </div>
+        <div id="L_G">
+            {% if not current_user.is_authenticated %}
+            <div id="login_btn">
+                <a onclick="location.href='{{ url_for('login') }}'">Login</a>
+            </div>
+            {% else %}
+            <div id="login_btn">
+                <a onclick="location.href='{{ url_for('logout') }}'">Logout</a>
+            </div>
+            <div id="get_started">
+                <a href="#">Get Started</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+    <main id="m">
+        <div id="main">
+            
+            <div class="logo">
+                <a href="#"><img src="/img/logo.png" alt="logo"></a>
+            </div>
+            <div id="App_title">
+                NOTE<span id="D">D</span>
+            </div>
+            <div id="support">
+                all at one place
+            </div>
+            <div id="new_note">
+                <button onclick="location.href='{{ url_for('notes') }}'">Take a new note <img id="rec_img" src="/img/mic_logo.png" alt="rec"></button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Noted. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const activePage = window.location.pathname; // Get the current page path
+            const navLinks = document.querySelectorAll('#action_bar a'); // Select only nav links
+        
+            navLinks.forEach(link => {
+                // Check if the link's href includes the active page
+                if (link.href.includes(activePage)) {
+                    link.classList.add('active'); // Add 'active' class to the current link
+                }
+            });
+        });    
+    </script>
+{%endblock%}
